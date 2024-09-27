@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="title">
+        <h1>FORMULÁRIOS CRIADOS</h1>
+    </div>
+
+    <div class="div-formularios">
+        {% if formularios %}
+
+            {% for formulario in formularios %}
+
+                <a href="{{ url_for('criarformulario') }}">
+                <div class="formularios">
+                    <h2>{{ formulario.title }}</h2>
+                    <p>{{ formulario.description }}</p>
+                </div>   
+                </a>
+                
+            {% endfor %}
+        {% else %}
+                <h2>não há formulários</h2>
+        {% endif %}
+
+    </div>
+    <a href="{{ url_for('criarformulario') }}">
+        <button class="botao">Criar formulário</button>
+    </a>
+</body>
+</html>

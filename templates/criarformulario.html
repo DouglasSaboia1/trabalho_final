@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js')}}" defer></script>
+    <title>Criador de formulários</title>
+</head>
+<body>
+    <form action="{{ url_for('criarformulario') }}" method="POST">
+        <label for="title">Título:</label>
+        <input class="titulo" type="text" name="title" id="title" maxlength="200" required>
+
+        <label for="description">Descrição:</label>
+        <textarea name="description" id="description"></textarea>
+
+        <div id="questions">
+            <div class="question">
+                <label for="question_text">Pergunta:</label>
+                <input type="text" name="quest" required>
+
+                <label for="question_type">Tipo:</label>
+                <select name="type" class="question_type" required>
+                    <option value="short_answer">Resposta Curta</option>
+                    <option value="long_answer">Resposta Longa</option>
+                    <option value="multiple_choice">Múltipla Escolha</option>
+                    <option value="checkbox">Caixa de Seleção</option>
+                </select>
+
+                <div class="options"></div>
+            </div>
+        </div>
+
+        <div class="btns">
+            <button type="submit">Salvar Formulário</button>
+            <button type="button" onclick="addQuestion()">Adicionar Pergunta</button>
+        </div>
+
+    </form>
+
+
+</body>
+</html>
